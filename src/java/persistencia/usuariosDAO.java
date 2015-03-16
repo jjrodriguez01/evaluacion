@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.usuariosDTO;
-
+import static controlador.Conectar.getConnection;
 /**
  *
  * @author Sena
@@ -25,7 +25,12 @@ public class usuariosDAO {
     public synchronized String insertarUsuario(usuariosDTO usu, Connection cnn){
         try{
         ps = cnn.prepareStatement("INSERT INTO usuarios ( idUser, NombreCompleto, email," 
-               + "userName, pass) VALUES (?, ?, ?, ?, ?) ");
+               + "userName, pass) VALUES (?, ?, ?, ?, md5(?) ");
+        ps.setLong(1, usu.getIdUser());
+        ps.setString(2, usu.getNombreCompleto());
+        ps.setString(3, usu.getEmail());
+        ps.setString(4, usu.getUserName());
+        ps.setString(5, usu.getPass());
         rtdo = ps.executeUpdate();
             if (rtdo>0) {
                 mensaje = "Se inserto el usuario";
