@@ -47,7 +47,7 @@
         <section class="col-md-9 col-sm-8 col-xs-8">
             <article id="login">
                 <div class="container">
-                    <form role="form" class="form-horizontal">
+                    <form action="Control" role="form" class="form-horizontal">
     <div class="form-group col-md-7 col-sm-6 col-xs-6">
       <label for="usu">Usuario:</label>
       <input type="text" class="form-control" name="usu" placeholder="Ingrese su usuario" maxlength="40">
@@ -57,7 +57,7 @@
       <input type="password" class="form-control" name="pass" placeholder="Ingrese su contraseña" maxlength="40">
     </div>
     <div class="col-md-7 col-sm-6 col-xs-6">                   
-    <button type="submit" class="btn btn-default">Ingresar</button>
+        <button type="submit" class="btn btn-default" name="Ingresar" >Ingresar</button>
     </div>
     
   </form>
@@ -66,7 +66,7 @@
             <article id="registro" class="hidden">
                 <div class="container">
   <h2>Registro de usuarios</h2>
-  <form class="form-horizontal" role="form">
+  <form action="Control" class="form-horizontal" role="form">
     <div class="form-group">
       <label class="control-label col-sm-2" for="id">Id usuario:</label>
       <div class="col-md-7 col-sm-6 col-xs-6">
@@ -103,12 +103,27 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Registrar</button>
+          <button type="submit" class="btn btn-default" name="rusu" value="Registrar">Registrar</button>
       </div>
     </div>
   </form>
+  <% if (request.getParameter("registrado")!=null) {
+  %> 
+  <div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><%=request.getParameter("registrado")%></strong>
+</div>
+  <%
+            } 
+  %>
 </div>
             </article>
+            <% if(request.getParameter("desautorizado")!=null){ %>
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><%=request.getParameter("desautorizado")%></strong>
+</div>
+<%   }   %>
         </section>
     </div>
 </main>

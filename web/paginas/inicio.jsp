@@ -4,14 +4,26 @@
     Author     : jeisson
 --%>
 
+<%@page import="persistencia.UsuariosDAO"%>
+<%@page import="modelo.UsuariosDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+    if (request.getSession()!=null) {
+                    UsuariosDTO udto = new UsuariosDTO();
+                    UsuariosDAO udao = new UsuariosDAO();
+                    HttpSession miSession=request.getSession(false);
+                    udto = (UsuariosDTO)miSession.getAttribute("usuario");
+
+                    
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title><%=udto.getNombreCompleto()%></title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1></h1>
     </body>
 </html>
+<%  }   %>
