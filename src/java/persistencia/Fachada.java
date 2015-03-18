@@ -3,6 +3,7 @@ package persistencia;
 import controlador.Conectar;
 import java.sql.Connection;
 import modelo.UsuariosDTO;
+import java.util.List;
 /**
  *
  * @author jeisson
@@ -34,5 +35,21 @@ public class Fachada {
     }
     public UsuariosDTO getUsuario(long id){
         return udao.listarUno(id, conexion);
+    }
+    
+    public boolean usuarioMultado(long id){
+        return udao.listarConMulta(id, conexion);
+    }
+    
+    public List<UsuariosDTO> listarUsuarios(){
+        return udao.listarTodo(conexion);
+    }
+    
+    public boolean estaMultado(Long id){
+        return udao.listarConMulta(id, conexion);
+    }
+    
+    public int tieneCupo(long id){
+        return udao.cantPrestamos(id, conexion);
     }
 }

@@ -4,6 +4,14 @@
  * and open the template in the editor.
  */
 package controlador;
+import java.security.Principal;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import static javax.print.attribute.Size2DSyntax.MM;
 import modelo.*;
 import persistencia.*;
 /**
@@ -11,10 +19,7 @@ import persistencia.*;
  * @author jeisson
  */
 public class pruebas {
-    public static void main(String args[]){
- UsuariosDTO usus = new UsuariosDTO();
- Fachada f = new Fachada(); 
- usus= f.getUsuario(1016036010);
-
-    }
+    public static void main(String[] args) {
+        
+}
 }

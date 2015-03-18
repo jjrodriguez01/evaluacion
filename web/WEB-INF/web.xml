@@ -4,9 +4,25 @@
         <servlet-name>Conectar</servlet-name>
         <servlet-class>controlador.Conectar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UsuariosMultados</servlet-name>
+        <servlet-class>controlador.UsuariosMultados</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Control</servlet-name>
+        <servlet-class>controlador.Control</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Conectar</servlet-name>
         <url-pattern>/Conectar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuariosMultados</servlet-name>
+        <url-pattern>/UsuariosMultados</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Control</servlet-name>
+        <url-pattern>/Control</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -11,14 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import modelo.UsuariosDTO;
-import persistencia.Fachada;
+
 /**
  *
  * @author jeisson
  */
-public class Control extends HttpServlet {
+public class UsuariosMultados extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,39 +30,19 @@ public class Control extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        UsuariosDTO udto = null;
-        Fachada facade = new Fachada();
-        if (request.getParameter("rusu")!=null) {
-            udto = new UsuariosDTO();
-            udto.setIdUser(Long.parseLong(request.getParameter("id")));
-            udto.setNombreCompleto(request.getParameter("nombres"));
-            udto.setEmail(request.getParameter("email"));
-            udto.setUserName(request.getParameter("usu"));
-            udto.setPass(request.getParameter("pass"));
-            String msj = facade.registrarUsuario(udto);
-            response.sendRedirect("index.jsp?registrado="+msj);
-        }else if(request.getParameter("Ingresar")!=null){
-            String password = request.getParameter("pass");
-            String usuario = request.getParameter("usu");
-            boolean siExiste = facade.validarUsu(usuario, password);
-            response.sendRedirect("index.jsp?k="+siExiste);
-
-            if (siExiste == true) {
-                long iduser = facade.existeUsuario(usuario, password);
-                if (iduser != 0) {
-                    HttpSession sesion = request.getSession();
-                    udto = new UsuariosDTO();
-                    udto = facade.getUsuario(iduser);
-                    sesion.setAttribute("usuario", udto);
-                    response.sendRedirect("paginas/inicio.jsp");
-                }
-            }
-                else{
-                    response.sendRedirect("index.jsp?desautorizado=Usuario o contraseña invalidos"
-                    + siExiste);
-                }
-            }
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet UsuariosMultados</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet UsuariosMultados at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
